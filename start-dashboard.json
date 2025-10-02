@@ -1,0 +1,13 @@
+{
+  "name": "start-dashboard",
+  "description": "Script de démarrage rapide pour le Dashboard CH Abas Ndao",
+  "scripts": {
+    "setup": "npm install && echo 'Installation terminée! Utilisez npm run dev pour démarrer.'",
+    "dev": "ng serve --open --port 4200",
+    "build": "ng build --configuration production",
+    "test": "ng test",
+    "lint": "ng lint",
+    "docker-build": "docker build -t ch-abas-ndao-dashboard .",
+    "docker-run": "docker run -p 4200:80 ch-abas-ndao-dashboard"
+  }
+}
