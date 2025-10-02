@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <div class="container-fluid">
+        <!-- Logo -->
+        <a class="navbar-brand d-flex align-items-center" href="#">
+            <i class="fas fa-hospital text-primary me-2 fs-4"></i>
+            <span class="fw-bold text-primary">CH Abas Ndao</span>
+        </a>
+
+        <!-- Toggle button for mobile -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Right side items -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <div class="d-flex align-items-center">
+                <!-- Notifications -->
+                <div class="position-relative me-3">
+                    <i class="fas fa-bell text-muted fs-5 cursor-pointer" data-bs-toggle="dropdown"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        *ngIf="notifications > 0">
+                        {{notifications}}
+                    </span>
+                </div>
+
+                <!-- Messages -->
+                <div class="position-relative me-3">
+                    <i class="fas fa-envelope text-muted fs-5 cursor-pointer" data-bs-toggle="dropdown"></i>
+                    <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-success"
+                        *ngIf="messages > 0">
+                        {{messages}}
+                    </span>
+                </div>
+
+                <!-- User Profile -->
+                <div class="dropdown" *ngIf="currentUser">
+                    <div class="d-flex align-items-center cursor-pointer" data-bs-toggle="dropdown">
+                        <img src="assets/images/doctor-avatar.jpg" alt="Profile" class="rounded-circle me-2" width="40"
+                            height="40" style="object-fit: cover;">
+                        <div class="d-none d-md-block">
+                            <div class="fw-semibold">{{currentUser.prenom}}</div>
+                            <small class="text-muted">En ligne</small>
+                        </div>
+                        <i class="fas fa-chevron-down ms-2 text-muted"></i>
+                    </div>
+
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profil</a></li>
+                        <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Paramètres</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item text-danger" (click)="logout()">
+                                <i class="fas fa-sign-out-alt me-2"></i>Déconnexion
+                            </a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>

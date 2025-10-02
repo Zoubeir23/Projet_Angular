@@ -1,0 +1,262 @@
+.appointment-booking-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  padding: 2rem;
+  
+  .booking-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    
+    // Section Médecin
+    .doctor-section {
+      .doctor-card {
+        height: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        
+        .doctor-profile {
+          display: flex;
+          height: 100%;
+          
+          .doctor-left {
+            flex: 1;
+            padding: 2rem;
+            background: linear-gradient(135deg, #1A365D 0%, #2D3748 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+            .doctor-info {
+              .doctor-name {
+                font-size: 1.5rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+                color: white;
+              }
+              
+              .doctor-specialty,
+              .doctor-experience,
+              .doctor-languages {
+                font-size: 1rem;
+                margin-bottom: 0.75rem;
+                opacity: 0.9;
+              }
+              
+              .doctor-description {
+                margin-top: 1.5rem;
+                
+                p {
+                  line-height: 1.6;
+                  opacity: 0.8;
+                  font-size: 0.95rem;
+                }
+              }
+            }
+          }
+          
+          .doctor-right {
+            flex: 1;
+            background: #00BCD4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            
+            .doctor-image-container {
+              width: 200px;
+              height: 200px;
+              border-radius: 12px;
+              overflow: hidden;
+              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+              
+              .doctor-image {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+    }
+    
+    // Section Réservation
+    .booking-section {
+      .booking-card {
+        height: 100%;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        
+        mat-card-header {
+          background: #00BCD4;
+          color: white;
+          padding: 1.5rem 2rem;
+          margin: -1rem -1rem 1.5rem -1rem;
+          
+          .booking-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: white;
+            text-align: center;
+          }
+        }
+        
+        mat-card-content {
+          padding: 2rem;
+          
+          .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            
+            .form-row {
+              display: flex;
+              gap: 1rem;
+              
+              .half-width {
+                flex: 1;
+              }
+            }
+            
+            .full-width {
+              width: 100%;
+            }
+            
+            .form-actions {
+              margin-top: 1rem;
+              
+              .book-btn {
+                width: 100%;
+                height: 48px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                border-radius: 8px;
+                background: #1A365D;
+                
+                mat-icon {
+                  margin-right: 0.5rem;
+                }
+                
+                &:disabled {
+                  background: #CBD5E0;
+                  color: #718096;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Styles pour les champs de formulaire
+.mat-form-field {
+  .mat-form-field-outline {
+    border-radius: 8px;
+  }
+  
+  &.mat-focused .mat-form-field-outline-thick {
+    border-color: #00BCD4;
+  }
+}
+
+// Responsive Design
+@media (max-width: 1024px) {
+  .appointment-booking-page {
+    .booking-container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      
+      .doctor-section .doctor-card .doctor-profile {
+        flex-direction: column;
+        
+        .doctor-right {
+          .doctor-image-container {
+            width: 150px;
+            height: 150px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .appointment-booking-page {
+    padding: 1rem;
+    
+    .booking-container {
+      gap: 1rem;
+      
+      .doctor-section .doctor-card .doctor-profile {
+        .doctor-left {
+          padding: 1.5rem;
+        }
+        
+        .doctor-right {
+          padding: 1.5rem;
+          
+          .doctor-image-container {
+            width: 120px;
+            height: 120px;
+          }
+        }
+      }
+      
+      .booking-section .booking-card mat-card-content {
+        padding: 1.5rem;
+        
+        .booking-form .form-row {
+          flex-direction: column;
+          gap: 1.5rem;
+        }
+      }
+    }
+  }
+}
+
+// Animations
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.doctor-card,
+.booking-card {
+  animation: slideInUp 0.6s ease-out;
+}
+
+.booking-card {
+  animation-delay: 0.2s;
+}
+
+// Hover Effects
+.doctor-card,
+.booking-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
+  }
+}
+
+// Styles pour les snackbars
+:host ::ng-deep {
+  .success-snackbar {
+    background-color: #4CAF50;
+    color: white;
+  }
+}

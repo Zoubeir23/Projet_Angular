@@ -1,0 +1,14 @@
+<div class="sidebar bg-white shadow-sm h-100">
+    <div class="sidebar-content p-0">
+        <!-- Menu Items -->
+        <nav class="nav flex-column">
+            <div class="nav-item" *ngFor="let item of menuItems" [class.active]="item.active"
+                (click)="navigateTo(item.route)">
+                <a class="nav-link d-flex align-items-center py-3 px-4">
+                    <i [class]="item.icon + ' me-3 fs-5'"></i>
+                    <span class="fw-medium">{{item.label}}</span>
+                </a>
+            </div>
+        </nav>
+    </div>
+</div>

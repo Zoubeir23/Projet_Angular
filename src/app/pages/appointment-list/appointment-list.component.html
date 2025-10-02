@@ -1,0 +1,69 @@
+<div class="appointment-list-container">
+    <!-- Header -->
+    <app-header></app-header>
+
+    <div class="d-flex">
+        <!-- Sidebar -->
+        <app-sidebar></app-sidebar>
+
+        <!-- Main Content -->
+        <div class="main-content flex-grow-1 p-4">
+            <div class="appointment-schedule">
+                <!-- Header -->
+                <div class="schedule-header text-center mb-4">
+                    <h2 class="text-primary fw-bold">Liste des Rendez-Vous du Médecin</h2>
+                </div>
+
+                <!-- Calendar Navigation -->
+                <div
+                    class="calendar-navigation d-flex justify-content-between align-items-center mb-4 p-3 bg-primary text-white rounded">
+                    <button class="btn btn-light" (click)="previousMonth()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <h3 class="mb-0 fw-bold">{{getCurrentMonthYear()}}</h3>
+                    <button class="btn btn-light" (click)="nextMonth()">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <!-- Schedule Table -->
+                <div class="schedule-table">
+                    <!-- Days Header -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead class="table-light">
+                                <tr>
+                                    <th class="text-center py-3">Heure</th>
+                                    <th class="text-center py-3" *ngFor="let day of dayNames">{{day}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let timeSlot of timeSlots">
+                                    <td class="time-slot text-center fw-semibold py-3">{{timeSlot}}</td>
+                                    <td class="appointment-cell" *ngFor="let day of daysInWeek; let dayIndex = index">
+                                        <div class="appointment-slot"
+                                            *ngIf="getAppointmentForSlot(timeSlot, dayIndex) as appointment">
+                                            <div class="appointment-card p-3 rounded shadow-sm"
+                                                [class.consultation]="appointment.type === 'Consultation'"
+                                                [class.chirurgie]="appointment.type === 'Chirurgie Dentaire'"
+                                                [class.bilan]="appointment.type === 'Bilan bucco-dentaire'">
+                                                <div class="appointment-type fw-bold mb-1">{{appointment.type}}</div>
+                                                <div class="patient-info">
+                                                    <div class="patient-name text-primary fw-semibold">
+                                                        Avec {{appointment.patient.prenom}} {{appointment.patient.nom}}
+                                                    </div>
+                                                    <div class="patient-location text-muted small">
+                                                        {{appointment.patient.adresse}}</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

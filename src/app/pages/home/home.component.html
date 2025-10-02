@@ -1,0 +1,135 @@
+<div class="homepage">
+  <!-- Header Navigation -->
+  <header class="header">
+    <nav class="navbar">
+      <div class="nav-brand">
+        <mat-icon class="hospital-icon">local_hospital</mat-icon>
+        <span class="brand-text">CH Abas</span>
+      </div>
+      <div class="nav-menu">
+        <a href="#" class="nav-link">Accueil</a>
+        <a href="#" class="nav-link">Nos Services</a>
+        <a href="#" class="nav-link">Nos Médecins</a>
+        <a href="#" class="nav-link">Nos Contacts</a>
+        <button mat-raised-button class="nav-btn" (click)="navigateToRegister()">Inscription</button>
+        <button mat-raised-button color="primary" class="nav-btn" (click)="navigateToLogin()">Connexion</button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay">
+      <div class="hero-content">
+        <div class="hero-text">
+          <p class="welcome-text">BIENVENUE SUR LE SITE DU</p>
+          <h1 class="hero-title">
+            Centre Hôpitalier<br>
+            Abas Ndao
+          </h1>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <div class="hero-navigation">
+          <button mat-icon-button class="nav-arrow left-arrow">
+            <mat-icon>chevron_left</mat-icon>
+          </button>
+          <button mat-icon-button class="nav-arrow right-arrow">
+            <mat-icon>chevron_right</mat-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scroll to top button -->
+      <button mat-fab class="scroll-top-btn" color="primary">
+        <mat-icon>keyboard_arrow_up</mat-icon>
+      </button>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="services-section">
+    <div class="container">
+      <h2 class="section-title">Nos Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <mat-icon class="service-icon">medical_services</mat-icon>
+          <h3>Consultations Médicales</h3>
+          <p>Consultations générales et spécialisées avec nos médecins experts</p>
+        </div>
+        <div class="service-card">
+          <mat-icon class="service-icon">healing</mat-icon>
+          <h3>Chirurgie</h3>
+          <p>Interventions chirurgicales dans un environnement sécurisé</p>
+        </div>
+        <div class="service-card">
+          <mat-icon class="service-icon">local_pharmacy</mat-icon>
+          <h3>Pharmacie</h3>
+          <p>Médicaments et conseils pharmaceutiques</p>
+        </div>
+        <div class="service-card">
+          <mat-icon class="service-icon">monitor_heart</mat-icon>
+          <h3>Urgences</h3>
+          <p>Service d'urgence disponible 24h/24 et 7j/7</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="quick-actions">
+    <div class="container">
+      <div class="actions-grid">
+        <mat-card class="action-card" (click)="navigateToRegister()">
+          <mat-card-header>
+            <mat-icon mat-card-avatar>person_add</mat-icon>
+            <mat-card-title>Nouveau Patient</mat-card-title>
+            <mat-card-subtitle>Créez votre compte</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Inscrivez-vous pour accéder à nos services et prendre rendez-vous en ligne</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary">S'inscrire</button>
+          </mat-card-actions>
+        </mat-card>
+
+        <mat-card class="action-card" (click)="navigateToLogin()">
+          <mat-card-header>
+            <mat-icon mat-card-avatar>calendar_today</mat-icon>
+            <mat-card-title>Prendre Rendez-vous</mat-card-title>
+            <mat-card-subtitle>Réservez votre créneau</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-content>
+            <p>Connectez-vous pour consulter les disponibilités et réserver</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="accent">Se connecter</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>Centre Hôpitalier Abas Ndao</h3>
+          <p>Votre santé, notre priorité</p>
+        </div>
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <p>Téléphone: +221 33 XXX XX XX</p>
+          <p>Email: contact&#64;chabas.sn</p>
+        </div>
+        <div class="footer-section">
+          <h4>Horaires</h4>
+          <p>Lundi - Vendredi: 8h - 18h</p>
+          <p>Samedi: 8h - 12h</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>

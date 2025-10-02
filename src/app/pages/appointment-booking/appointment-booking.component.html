@@ -1,0 +1,95 @@
+<div class="appointment-booking-page">
+  <div class="booking-container">
+
+    <!-- Section Médecin -->
+    <div class="doctor-section">
+      <mat-card class="doctor-card" *ngIf="selectedDoctor">
+        <div class="doctor-profile">
+          <!-- Photo et informations du médecin -->
+          <div class="doctor-left">
+            <div class="doctor-info">
+              <h2 class="doctor-name">Nom : {{ selectedDoctor.prenom }} {{ selectedDoctor.nom }}</h2>
+              <p class="doctor-specialty">Spécialité : {{ selectedDoctor.specialite }}</p>
+              <p class="doctor-experience">Expérience : {{ selectedDoctor.experience }} ans</p>
+              <p class="doctor-languages">Langues parlées : {{ selectedDoctor.langues.join(' et ') }}</p>
+
+              <div class="doctor-description">
+                <p>{{ selectedDoctor.description }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Photo du médecin -->
+          <div class="doctor-right">
+            <div class="doctor-image-container">
+              <img [src]="selectedDoctor.photo" [alt]="selectedDoctor.prenom + ' ' + selectedDoctor.nom"
+                class="doctor-image">
+            </div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+
+    <!-- Section Réservation -->
+    <div class="booking-section">
+      <mat-card class="booking-card">
+        <mat-card-header>
+          <mat-card-title class="booking-title">Prendre Rendez-vous</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <form [formGroup]="bookingForm" (ngSubmit)="onSubmit()" class="booking-form">
+
+            <!-- Date et Heure -->
+            <div class="form-row">
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Date du Rendez-vous</mat-label>
+                <input matInput [matDatepicker]="datePicker" formControlName="dateRendezVous"
+                  placeholder="Sélectionnez une date" [min]="minDate" readonly>
+                <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+                <mat-datepicker #datePicker></mat-datepicker>
+                <mat-error
+                  *ngIf="bookingForm.get('dateRendezVous')?.invalid && bookingForm.get('dateRendezVous')?.touched">
+                  {{ getErrorMessage('dateRendezVous') }}
+                </mat-error>
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="half-width">
+                <mat-label>Heure du Rendez-vous</mat-label>
+                <mat-select formControlName="heureRendezVous" placeholder="Sélectionnez une heure">
+                  <mat-option *ngFor="let time of availableTimeSlots" [value]="time">
+                    {{ time }}
+                  </mat-option>
+                </mat-select>
+                <mat-error
+                  *ngIf="bookingForm.get('heureRendezVous')?.invalid && bookingForm.get('heureRendezVous')?.touched">
+                  {{ getErrorMessage('heureRendezVous') }}
+                </mat-error>
+              </mat-form-field>
+            </div>
+
+            <!-- Motif -->
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Motif du Rendez-vous</mat-label>
+              <textarea matInput formControlName="motifRendezVous"
+                placeholder="Décrivez le motif de votre consultation..." rows="4">
+              </textarea>
+              <mat-error
+                *ngIf="bookingForm.get('motifRendezVous')?.invalid && bookingForm.get('motifRendezVous')?.touched">
+                {{ getErrorMessage('motifRendezVous') }}
+              </mat-error>
+            </mat-form-field>
+
+            <!-- Bouton de réservation -->
+            <div class="form-actions">
+              <button mat-raised-button color="primary" type="submit" class="book-btn" [disabled]="bookingForm.invalid">
+                <mat-icon>event</mat-icon>
+                Enregistrer
+              </button>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

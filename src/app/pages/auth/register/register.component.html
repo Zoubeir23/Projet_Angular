@@ -1,0 +1,80 @@
+<div class="register-container">
+  <div class="register-card">
+    <div class="text-center mb-4">
+      <h2 class="register-title">Inscription</h2>
+      <p class="register-subtitle">Créez votre compte médical</p>
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="nom" class="form-label">Nom</label>
+          <input type="text" class="form-control" id="nom" formControlName="nom" placeholder="Votre nom">
+          <div *ngIf="registerForm.get('nom')?.invalid && registerForm.get('nom')?.touched"
+            class="text-danger small mt-1">
+            Le nom est requis
+          </div>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <label for="prenom" class="form-label">Prénom</label>
+          <input type="text" class="form-control" id="prenom" formControlName="prenom" placeholder="Votre prénom">
+          <div *ngIf="registerForm.get('prenom')?.invalid && registerForm.get('prenom')?.touched"
+            class="text-danger small mt-1">
+            Le prénom est requis
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" formControlName="email"
+          placeholder="votre.email@hopital.com">
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched"
+          class="text-danger small mt-1">
+          L'email est requis et doit être valide
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="telephone" class="form-label">Téléphone</label>
+        <input type="tel" class="form-control" id="telephone" formControlName="telephone"
+          placeholder="Votre numéro de téléphone">
+        <div *ngIf="registerForm.get('telephone')?.invalid && registerForm.get('telephone')?.touched"
+          class="text-danger small mt-1">
+          Le téléphone est requis
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">Mot de passe</label>
+        <input type="password" class="form-control" id="password" formControlName="password"
+          placeholder="Minimum 6 caractères">
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+          class="text-danger small mt-1">
+          Le mot de passe doit contenir au moins 6 caractères
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="confirmPassword" class="form-label">Confirmer le mot de passe</label>
+        <input type="password" class="form-control" id="confirmPassword" formControlName="confirmPassword"
+          placeholder="Répétez votre mot de passe">
+        <div *ngIf="registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched"
+          class="text-danger small mt-1">
+          Les mots de passe ne correspondent pas
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 mb-3" [disabled]="registerForm.invalid">
+        S'inscrire
+      </button>
+
+      <div class="text-center">
+        <a routerLink="/auth/login" class="text-decoration-none">
+          Déjà un compte ? Se connecter
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

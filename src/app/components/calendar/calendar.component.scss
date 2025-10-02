@@ -1,0 +1,101 @@
+.calendar-container {
+  background: white;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.calendar-title {
+  font-size: 1.5rem;
+}
+
+.calendar-grid {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.calendar-header-row {
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.calendar-day {
+  min-height: 60px;
+  border-right: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #f8f9fa;
+  }
+
+  &:last-child {
+    border-right: none;
+  }
+
+  &.current-month {
+    .day-number {
+      color: #374151;
+      font-weight: 500;
+    }
+  }
+
+  &:not(.current-month) {
+    .day-number {
+      color: #d1d5db;
+    }
+  }
+
+  &.today {
+    background-color: #dbeafe;
+    
+    .day-number {
+      color: #1d4ed8;
+      font-weight: bold;
+      background-color: #3b82f6;
+      color: white;
+      border-radius: 50%;
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &.has-appointment {
+    background-color: #dcfce7;
+    
+    .day-number {
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 6px;
+        height: 6px;
+        background-color: #10b981;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.day-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  min-height: 60px;
+}
+
+.day-number {
+  font-size: 0.875rem;
+}
